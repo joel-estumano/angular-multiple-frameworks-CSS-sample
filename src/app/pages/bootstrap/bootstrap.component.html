@@ -1,0 +1,43 @@
+<section class="container p-3">
+	<div class="py-4 text-center">
+		<h3 class="mb-1 display-5 fw-bold">Bootstrap Cards</h3>
+		<h4 class="fs-5 text-muted">My latest works</h4>
+	</div>
+	<div class="row">
+		@for (rows of projects(); track $index) {
+			<div class="gap-4 mt-4 col-md-4 d-flex flex-column">
+				@for (project of rows; track $index) {
+					<div class="shadow card h-100">
+						<div class="card-header d-flex justify-content-between align-items-center">
+							<span class="fw-semibold">{{ project.title }}</span>
+							<div class="flex-wrap gap-2 d-flex">
+								@for (tag of project.tags; track $index) {
+									<span
+										class="badge text-bg-secondary"
+										[ngClass]="{
+											'text-bg-danger': tag === 'WIP',
+											'text-bg-dark': tag === '?',
+											'text-bg-primary': tag !== 'WIP' && tag !== '?'
+										}"
+									>
+										{{ tag }}
+									</span>
+								}
+							</div>
+						</div>
+						<div class="p-0 card-body">
+							<img [src]="project.imgUrl" [alt]="'Imagem de ' + project.title" class="img-fluid" />
+							<div class="px-3 pt-3">
+								<p>{{ project.description }}</p>
+							</div>
+						</div>
+						<div class="gap-2 card-footer d-flex justify-content-end">
+							<a routerLink="/bootstrap" class="btn btn-primary btn-sm">Preview</a>
+							<a routerLink="/bootstrap" class="btn btn-secondary btn-sm">Source Code</a>
+						</div>
+					</div>
+				}
+			</div>
+		}
+	</div>
+</section>

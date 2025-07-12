@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--color-background: #0a0a0a;
+	--color-text: #fafafa;
+}
+
+@layer base {
+	body {
+		@apply bg-background text-text;
+	}
+	img,
+	a,
+	button {
+		@apply select-none;
+	}
+}

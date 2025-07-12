@@ -1,0 +1,7 @@
+$green: #00ccad;
+
+@use "bulma/sass" with (
+	$link: $green
+);
+
+// Personalize Bulma com variáveis Sass 👉 https://bulma.io/documentation/customize/with-sass/

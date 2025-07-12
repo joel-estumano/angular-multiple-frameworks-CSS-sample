@@ -1,0 +1,7 @@
+# Ignore artifacts:
+build/
+coverage/
+.angular/
+
+# Node.js
+node_modules/

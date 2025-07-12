@@ -1,0 +1,46 @@
+<section class="pb-5 section">
+	<div class="container">
+		<div class="mb-6 has-text-centered">
+			<h3 class="title is-2">Bulma cards</h3>
+			<h4 class="subtitle is-5">My latest works</h4>
+		</div>
+		<div>
+			<div class="columns">
+				@for (rows of projects(); track $index) {
+					<div class="column is-4">
+						@for (project of rows; track $index) {
+							<div class="card">
+								<header class="card-header">
+									<div class="card-header-title">
+										<span>{{ project.title }}</span>
+										@for (tag of project.tags; track $index) {
+											<div class="pl-1 is-pulled-right">
+												<span class="tag" [ngClass]="tag === 'WIP' ? 'is-danger' : tag === '?' ? 'is-dark' : 'is-default'">{{
+													tag
+												}}</span>
+											</div>
+										}
+									</div>
+								</header>
+								<div class="card-content">
+									<figure class="image">
+										<img [src]="project.imgUrl" [alt]="'Imagem de' + project.title" />
+									</figure>
+									<div class="mt-4">
+										<p class="text-base text-gray-700">
+											{{ project.description }}
+										</p>
+									</div>
+								</div>
+								<footer class="card-footer">
+									<a routerLink="/bulma" class="card-footer-item">Preview</a>
+									<a routerLink="/bulma" class="card-footer-item">Source Code</a>
+								</footer>
+							</div>
+						}
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</section>

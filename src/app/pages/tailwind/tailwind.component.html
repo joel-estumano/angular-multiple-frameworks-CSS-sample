@@ -1,0 +1,40 @@
+<section class="p-5 mx-auto max-w-7xl">
+	<div class="mt-8 text-center">
+		<h3 class="mb-2 text-4xl font-bold">Tailwind Cards</h3>
+		<h4 class="text-xl text-gray-600">My latest works</h4>
+	</div>
+	<div class="grid gap-6 mt-12 md:grid-cols-3">
+		@for (rows of projects(); track $index) {
+			<div class="grid w-full grid-rows-2 gap-6">
+				@for (project of rows; track $index) {
+					<div class="w-full overflow-hidden border rounded-lg shadow-lg border-slate-800">
+						<img class="w-full" [src]="project.imgUrl" [alt]="'Imagem de ' + project.title" />
+						<div class="px-6 py-4">
+							<div class="mb-2 text-xl font-bold">{{ project.title }}</div>
+							<p class="text-sm font-semibold text-gray-500">
+								{{ project.description }}
+							</p>
+						</div>
+						<div class="px-6">
+							@for (tag of project.tags; track $index) {
+								<span
+									class="inline-block px-3 py-1 mr-2 text-sm font-semibold rounded-full"
+									[ngClass]="{
+										'bg-red-100 text-red-700': tag === 'WIP',
+										'bg-gray-400 text-white': tag === '?',
+										'bg-blue-100 text-blue-700': tag !== 'WIP' && tag !== '?'
+									}"
+									>{{ tag }}</span
+								>
+							}
+						</div>
+						<div class="flex justify-start p-4 text-sm">
+							<a routerLink="/tailwind" class="p-2 text-center hover:underline">Preview</a>
+							<a routerLink="/tailwind" class="p-2 text-center hover:underline">Source Code</a>
+						</div>
+					</div>
+				}
+			</div>
+		}
+	</div>
+</section>
