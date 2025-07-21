@@ -44,7 +44,10 @@ export class FrameworkCssSwitcherService {
 		// Cria elemento <link> para o novo arquivo de estilo
 		const newLink = this.renderer.createElement('link') as HTMLLinkElement;
 		this.renderer.setAttribute(newLink, 'rel', 'stylesheet');
-		this.renderer.setAttribute(newLink, 'href', style.href);
+		/* this.renderer.setAttribute(newLink, 'href', style.href); */
+		const timestamp = new Date().getTime(); // ou use Math.random()
+		this.renderer.setAttribute(newLink, 'href', `${style.href}?v=${timestamp}`);
+		/*  */
 		this.renderer.setAttribute(newLink, 'id', `theme-${style.name}`);
 
 		// Obtém o link atualmente ativo (se houver)
